@@ -1,4 +1,4 @@
-"""" Enable Vundle: vim plugin manager
+""" Enable Vundle: vim plugin manager
 
 " required before Vundle initialization
 " set nocompatible        " disable compatibility mode with vi
@@ -14,12 +14,22 @@
 
 call plug#begin()
 Plug 'valloric/youcompleteme'
-
+Plug 'preservim/nerdtree'
 Plug 'sickill/vim-monokai'
 Plug 'gruvbox-community/gruvbox'
+Plug 'frazrepo/vim-rainbow'
+Plug 'airblade/vim-gitgutter/'
+Plug 'tpope/vim-fugitive'
+Plug 'itchyny/lightline.vim'
+Plug 'junegunn/fzf'
+Plug 'dense-analysis/ale'
 call plug#end()
 
 let mapleader = " "
+
+nnoremap <leader>n :NERDTreeFocus <CR>
+nnoremap <leader>f :FZF <CR>
+
 
 syntax enable
 colorscheme gruvbox
