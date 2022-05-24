@@ -31,6 +31,7 @@ nnoremap <leader>n :NERDTreeFocus <CR>
 nnoremap <leader>f :FZF <CR>
 
 
+set bg=dark
 syntax enable
 colorscheme gruvbox
 
