@@ -13,6 +13,7 @@
 
 
 call plug#begin()
+" Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'valloric/youcompleteme'
 Plug 'preservim/nerdtree'
 Plug 'sickill/vim-monokai'
@@ -23,26 +24,42 @@ Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf'
 Plug 'dense-analysis/ale'
+Plug 'mbbill/undotree'
+Plug 'tpope/vim-commentary'
 call plug#end()
 
 let mapleader = " "
 
 nnoremap <leader>n :NERDTreeFocus <CR>
 nnoremap <leader>f :FZF <CR>
+nnoremap <leader>h <C-w>h
+nnoremap <leader>l <C-w>l
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
+nnoremap <leader>s <C-w>s
+nnoremap <leader>v <C-w>v
+
+unmap <F1>
+
+
+set noswapfile
+set nobackup
+set undodir=~/.vim/undodir
+set undofile
 
 
 set bg=dark
 syntax enable
 colorscheme gruvbox
 
-let g:ycm_clangd_binary_path = trim(system('brew --prefix llvm')).'/bin/clangd'
+" let g:ycm_clangd_binary_path = trim(system('brew --prefix llvm')).'/bin/clangd'
 
 
 """" Basic Behavior
 
 set number              " show line numbers
 set relativenumber      " show relatives 
-set wrap                " wrap lines
+set nowrap              " wrap lines
 set encoding=utf-8      " set encoding to UTF-8 (default was "latin1")
 set mouse=a             " enable mouse support (might not work well on Mac OS X)
 set wildmenu            " visual autocomplete for command menu
@@ -51,13 +68,15 @@ set showmatch           " highlight matching parentheses / brackets [{()}]
 set laststatus=2        " always show statusline (even with only single window)
 set ruler               " show line and column number of the cursor on right side of statusline
 set visualbell          " blink cursor on error, instead of beeping
+set scrolloff=8
+set colorcolumn=80
+set signcolumn=yes
 
 
 """" Key Bindings
 
 " move vertically by visual line (don't skip wrapped lines)
-nmap j gj
-nmap k gk
+nmap <F1> <nop>
 
 
 """" Vim Appearance
