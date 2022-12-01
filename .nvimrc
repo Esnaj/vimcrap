@@ -1,9 +1,6 @@
-""" Enable Vundle: vim plugin manager
 
-" required before Vundle initialization
-" set nocompatible        " disable compatibility mode with vi
+" required before Vundle initialization set nocompatible        " disable compatibility mode with vi
 " filetype off            " disable filetype detection (but re-enable later, see below)
-
 " set the runtime path to include Vundle, and initialize
 " set rtp+=~/.vim/bundle/Vundle.vim
 " call vundle#begin()
@@ -12,10 +9,12 @@
 " call vundle#end()
 
 
-call plug#begin()
+call plug#begin('~/Config/.nvim/plugged')
 " Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 " Plug 'valloric/youcompleteme'
 Plug 'preservim/nerdtree'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/vim-jsx-improve'
 Plug 'sickill/vim-monokai'
 Plug 'gruvbox-community/gruvbox'
 Plug 'frazrepo/vim-rainbow'
@@ -37,6 +36,7 @@ let mapleader = " "
 
 nnoremap <leader>n :NERDTreeFocus <CR>
 nnoremap <leader>f :FZF <CR>
+nnoremap <leader>p :Prettier <CR>
 nnoremap <leader>h <C-w>h
 nnoremap <leader>l <C-w>l
 nnoremap <leader>j <C-w>j
@@ -44,7 +44,7 @@ nnoremap <leader>k <C-w>k
 nnoremap <leader>s <C-w>s
 nnoremap <leader>v <C-w>v
 
-unmap <F1>
+" unmap <F1>
 
 
 set noswapfile
@@ -59,6 +59,16 @@ colorscheme gruvbox
 
 " let g:ycm_clangd_binary_path = trim(system('brew --prefix llvm')).'/bin/clangd'
 "
+"
+
+" coc config
+let g:coc_global_extensions = [
+    \'coc-snippets',
+    \'coc-pairs',
+    \'coc-prettier',
+\]
+
+command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 
 set mouse=v
 
