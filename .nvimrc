@@ -13,6 +13,7 @@ call plug#begin('~/Config/.nvim/plugged')
 " Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 " Plug 'valloric/youcompleteme'
 Plug 'preservim/nerdtree'
+Plug 'vim-scripts/loremipsum'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/vim-jsx-improve'
 Plug 'sickill/vim-monokai'
@@ -22,6 +23,7 @@ Plug 'airblade/vim-gitgutter/'
 Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf'
+Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
 Plug 'dense-analysis/ale'
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-commentary'
@@ -35,6 +37,7 @@ call plug#end()
 let mapleader = " "
 
 nnoremap <leader>n :NERDTreeFocus <CR>
+nnoremap <leader>w :w <CR>
 nnoremap <leader>f :FZF <CR>
 nnoremap <leader>p :Prettier <CR>
 nnoremap <leader>h <C-w>h
