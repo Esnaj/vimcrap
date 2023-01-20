@@ -32,12 +32,14 @@ Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'jparise/vim-graphql'
+Plug 'psf/black'
 call plug#end()
 
 let mapleader = " "
 
 nnoremap <leader>n :NERDTreeFocus <CR>
 nnoremap <leader>w :w <CR>
+nnoremap <leader>q :q <CR>
 nnoremap <leader>f :FZF <CR>
 nnoremap <leader>p :Prettier <CR>
 nnoremap <leader>h <C-w>h
@@ -46,6 +48,10 @@ nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k
 nnoremap <leader>s <C-w>s
 nnoremap <leader>v <C-w>v
+
+
+" if python file autoformat with black instead
+autocmd FileType python nnoremap <leader>p :Black <CR>
 
 " unmap <F1>
 
@@ -69,6 +75,7 @@ let g:coc_global_extensions = [
     \'coc-snippets',
     \'coc-pairs',
     \'coc-prettier',
+    \'coc-python',
 \]
 
 command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
