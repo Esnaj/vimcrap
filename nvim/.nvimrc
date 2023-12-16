@@ -6,7 +6,7 @@
 " Plugin 'VundleVim/Vundle.vim'
 " Plugin 'wting/rust.vim' " enable syntax highlighting for rust
 " call vundle#end()
-
+"
 
 call plug#begin('~/Config/.nvim/plugged')
 " Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
@@ -17,6 +17,7 @@ Plug 'vim-scripts/loremipsum'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/vim-jsx-improve'
 Plug 'sickill/vim-monokai'
+Plug 'folke/tokyonight.nvim'
 Plug 'frazrepo/vim-rainbow'
 Plug 'airblade/vim-gitgutter/'
 Plug 'tpope/vim-fugitive'
@@ -85,6 +86,8 @@ set undofile
 set bg=dark
 syntax enable
 " colorscheme gruvbox
+colorscheme tokyonight-night
+
 
 " let g:ycm_clangd_binary_path = trim(system('brew --prefix llvm')).'/bin/clangd'
 "
