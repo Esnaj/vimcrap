@@ -1,19 +1,14 @@
-" required before Vundle initialization set nocompatible        " disable compatibility mode with vi
-" filetype off            " disable filetype detection (but re-enable later, see below)
-" set the runtime path to include Vundle, and initialize
-" set rtp+=~/.vim/bundle/Vundle.vim
-" call vundle#begin()
-" Plugin 'VundleVim/Vundle.vim'
-" Plugin 'wting/rust.vim' " enable syntax highlighting for rust
-" call vundle#end()
-"
 
 call plug#begin('~/Config/.nvim/plugged')
 " Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 " Plug 'valloric/youcompleteme'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'preservim/nerdtree'
+Plug 'preservim/tagbar'
 Plug 'vim-scripts/loremipsum'
+Plug 'github/copilot.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/vim-jsx-improve'
 Plug 'sickill/vim-monokai'
@@ -23,7 +18,6 @@ Plug 'airblade/vim-gitgutter/'
 Plug 'tpope/vim-fugitive'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.5' }
-" or                                , { 'branch': '0.1.x' }
 Plug 'itchyny/lightline.vim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'junegunn/fzf'
@@ -48,6 +42,9 @@ nnoremap <leader>f <cmd>Telescope find_files<CR>
 nnoremap <leader>g <cmd>Telescope live_grep<CR>
 " nnoremap <leader>p :Prettier <CR>
 nnoremap <leader>p :call FormatCode()<CR>
+
+nmap <leader>t :TagbarToggle<CR>
+
 nnoremap <leader>w :w <CR>
 nnoremap <leader>q :wq <CR>
 nnoremap <leader>h <C-w>h
@@ -81,11 +78,14 @@ set noswapfile
 set nobackup
 set undodir=~/.vim/undodir
 set undofile
+let g:airline_theme='base16_dracula'
 
 
 set bg=dark
 syntax enable
 " colorscheme gruvbox
+set termguicolors
+
 colorscheme tokyonight-night
 
 
