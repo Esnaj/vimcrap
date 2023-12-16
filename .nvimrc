@@ -12,15 +12,19 @@
 call plug#begin('~/Config/.nvim/plugged')
 " Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 " Plug 'valloric/youcompleteme'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'preservim/nerdtree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/vim-jsx-improve'
 Plug 'sickill/vim-monokai'
-Plug 'gruvbox-community/gruvbox'
 Plug 'frazrepo/vim-rainbow'
 Plug 'airblade/vim-gitgutter/'
 Plug 'tpope/vim-fugitive'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.5' }
+" or                                , { 'branch': '0.1.x' }
 Plug 'itchyny/lightline.vim'
+Plug 'neovim/nvim-lspconfig'
 Plug 'junegunn/fzf'
 Plug 'dense-analysis/ale'
 Plug 'mbbill/undotree'
@@ -30,19 +34,44 @@ Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'jparise/vim-graphql'
+Plug 'averms/black-nvim', {'do': ':UpdateRemotePlugins'}
 call plug#end()
 
 let mapleader = " "
 
 nnoremap <leader>n :NERDTreeFocus <CR>
-nnoremap <leader>f :FZF <CR>
-nnoremap <leader>p :Prettier <CR>
+" nnoremap <leader>f :FZF <CR>
+nnoremap <leader>f <cmd>Telescope find_files<CR>
+nnoremap <leader>g <cmd>Telescope live_grep<CR>
+" nnoremap <leader>p :Prettier <CR>
+nnoremap <leader>p :call FormatCode()<CR>
+
+nnoremap <leader>w :w <CR>
+nnoremap <leader>q :wq <CR>
 nnoremap <leader>h <C-w>h
 nnoremap <leader>l <C-w>l
 nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k
 nnoremap <leader>s <C-w>s
 nnoremap <leader>v <C-w>v
+
+
+function! FormatCode()
+    if &filetype == 'python'
+        " Save current cursor position
+        let l:save_cursor = getpos(".")
+
+        " Run Black on the current buffer content and replace it
+        execute '%!black -q -'
+
+        " Restore the cursor position
+        call setpos('.', l:save_cursor)
+    else
+        " Your command to run Prettier or other formatters
+        execute ':Prettier'
+    endif
+endfunction
+
 
 " unmap <F1>
 
@@ -55,11 +84,15 @@ set undofile
 
 set bg=dark
 syntax enable
-colorscheme gruvbox
+" colorscheme gruvbox
 
 " let g:ycm_clangd_binary_path = trim(system('brew --prefix llvm')).'/bin/clangd'
 "
 "
+"
+nnoremap <buffer><silent> <c-q> <cmd>call Black()<cr>
+inoremap <buffer><silent> <c-q> <cmd>call Black()<cr>
+
 
 " coc config
 let g:coc_global_extensions = [
