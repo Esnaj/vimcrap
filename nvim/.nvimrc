@@ -1,4 +1,3 @@
-
 " required before Vundle initialization set nocompatible        " disable compatibility mode with vi
 " filetype off            " disable filetype detection (but re-enable later, see below)
 " set the runtime path to include Vundle, and initialize
@@ -14,6 +13,7 @@ call plug#begin('~/Config/.nvim/plugged')
 " Plug 'valloric/youcompleteme'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'preservim/nerdtree'
+Plug 'vim-scripts/loremipsum'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/vim-jsx-improve'
 Plug 'sickill/vim-monokai'
@@ -26,6 +26,7 @@ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.5' }
 Plug 'itchyny/lightline.vim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'junegunn/fzf'
+Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
 Plug 'dense-analysis/ale'
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-commentary'
@@ -35,6 +36,7 @@ Plug 'peitalin/vim-jsx-typescript'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'jparise/vim-graphql'
 Plug 'averms/black-nvim', {'do': ':UpdateRemotePlugins'}
+
 call plug#end()
 
 let mapleader = " "
@@ -45,7 +47,6 @@ nnoremap <leader>f <cmd>Telescope find_files<CR>
 nnoremap <leader>g <cmd>Telescope live_grep<CR>
 " nnoremap <leader>p :Prettier <CR>
 nnoremap <leader>p :call FormatCode()<CR>
-
 nnoremap <leader>w :w <CR>
 nnoremap <leader>q :wq <CR>
 nnoremap <leader>h <C-w>h
@@ -71,7 +72,6 @@ function! FormatCode()
         execute ':Prettier'
     endif
 endfunction
-
 
 " unmap <F1>
 
@@ -99,6 +99,7 @@ let g:coc_global_extensions = [
     \'coc-snippets',
     \'coc-pairs',
     \'coc-prettier',
+    \'coc-python',
 \]
 
 command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
@@ -114,7 +115,7 @@ set nowrap              " wrap lines
 set encoding=utf-8      " set encoding to UTF-8 (default was "latin1")
 " set mouse=a             " enable mouse support (might not work well on Mac OS X)
 set wildmenu            " visual autocomplete for command menu
-set lazyredraw          " redraw screen only when we need to
+" set lazyredraw          " redraw screen only when we need to
 set showmatch           " highlight matching parentheses / brackets [{()}]
 set laststatus=2        " always show statusline (even with only single window)
 set ruler               " show line and column number of the cursor on right side of statusline
